@@ -3,6 +3,8 @@ train.py — Task 17: Document Classification
 Uso: python train.py [--dry_run] [--model_size 1b] [--dataset ...] [--output_dir ...] [--num_epochs N] [--batch_size N]
 """
 from __future__ import annotations
+
+import unsloth  # noqa: F401 — must be first to patch CUDA kernels
 import argparse, logging, os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 logging.basicConfig(format="%(asctime)s | %(levelname)s | %(message)s", datefmt="%H:%M:%S", level=logging.INFO)
@@ -78,6 +80,7 @@ def train(args):
         dataset_text_field="text",
         max_length=MAX_SEQ_LENGTH,
         packing=True,
+        dataset_num_proc=1,  # avoids pickle error with Unsloth tokenizer
     )
     trainer = SFTTrainer(
         model=model,

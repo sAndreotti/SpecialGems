@@ -7,6 +7,8 @@ direttamente: creare sottoclassi o wrapper per logica specifica del task.
 
 from __future__ import annotations
 
+import unsloth  # noqa: F401 — must be first import to apply all optimizations
+
 import os
 import json
 import logging
@@ -74,10 +76,10 @@ def get_model_and_tokenizer(
         (model, tokenizer) pronti per get_peft_model
     """
     try:
-        from unsloth import FastLanguageModel
+        from unsloth import FastLanguageModel  # noqa: F811
     except ImportError:
         raise ImportError(
-            "Unsloth non trovato. Installa con:\n"
+            "Unsloth not found. Install with:\n"
             "  pip install unsloth[colab-new]"
         )
 

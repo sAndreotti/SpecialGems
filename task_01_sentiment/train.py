@@ -25,6 +25,8 @@ Dry run (CPU, nessuna GPU richiesta):
 
 from __future__ import annotations
 
+import unsloth  # noqa: F401 — must be first to patch CUDA kernels
+
 import argparse
 import logging
 import os
@@ -161,6 +163,7 @@ def train(args):
         dataset_text_field="text",
         max_length=MAX_SEQ_LENGTH,
         packing=True,   # aumenta efficienza su sequenze corte
+        dataset_num_proc=1,  # avoids pickle error with Unsloth tokenizer
     )
 
     trainer = SFTTrainer(
