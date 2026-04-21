@@ -1,0 +1,16 @@
+{
+  "task_id": "23",
+  "status": "PASSED",
+  "steps": 10,
+  "elapsed_sec": 0.42,
+  "output_dir": "checkpoints/dry_run_task23",
+  "saved_files": [
+    "config.json",
+    "generation_config.json",
+    "model.safetensors",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "training_args.bin"
+  ],
+  "note": "Pipeline verificata offline con modello mock. Test rete su Colab/Kaggle."
+}

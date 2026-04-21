@@ -1,0 +1,756 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": null,
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "[UNK]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 1,
+      "content": "[PAD]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 2,
+      "content": "[EOS]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 3,
+      "content": "[BOS]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 4,
+      "content": "<start_of_turn>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 5,
+      "content": "<end_of_turn>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    }
+  ],
+  "normalizer": null,
+  "pre_tokenizer": {
+    "type": "Whitespace"
+  },
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      }
+    ],
+    "pair": [
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "B",
+          "type_id": 1
+        }
+      }
+    ],
+    "special_tokens": {}
+  },
+  "decoder": null,
+  "model": {
+    "type": "BPE",
+    "dropout": null,
+    "unk_token": "[UNK]",
+    "continuing_subword_prefix": null,
+    "end_of_word_suffix": null,
+    "fuse_unk": false,
+    "byte_fallback": false,
+    "ignore_merges": false,
+    "vocab": {
+      "[UNK]": 0,
+      "[PAD]": 1,
+      "[EOS]": 2,
+      "[BOS]": 3,
+      "<start_of_turn>": 4,
+      "<end_of_turn>": 5,
+      ".": 6,
+      "<": 7,
+      ">": 8,
+      "I": 9,
+      "O": 10,
+      "Q": 11,
+      "_": 12,
+      "a": 13,
+      "b": 14,
+      "c": 15,
+      "d": 16,
+      "e": 17,
+      "f": 18,
+      "g": 19,
+      "h": 20,
+      "i": 21,
+      "j": 22,
+      "k": 23,
+      "l": 24,
+      "m": 25,
+      "n": 26,
+      "o": 27,
+      "p": 28,
+      "q": 29,
+      "r": 30,
+      "s": 31,
+      "t": 32,
+      "u": 33,
+      "v": 34,
+      "w": 35,
+      "x": 36,
+      "y": 37,
+      "z": 38,
+      "è": 39,
+      "st": 40,
+      "en": 41,
+      "est": 42,
+      "in": 43,
+      "ut": 44,
+      "esto": 45,
+      "an": 46,
+      "do": 47,
+      "er": 48,
+      "ti": 49,
+      "testo": 50,
+      "_o": 51,
+      "_t": 52,
+      "al": 53,
+      "em": 54,
+      "f_t": 55,
+      "he": 56,
+      "is": 57,
+      "men": 58,
+      "ne": 59,
+      "po": 60,
+      "put": 61,
+      "rn": 62,
+      "ro": 63,
+      "the": 64,
+      "urn": 65,
+      "vo": 66,
+      "sta": 67,
+      "tivo": 68,
+      "_of_t": 69,
+      "ment": 70,
+      "_of_turn": 71,
+      "In": 72,
+      "Out": 73,
+      "Qu": 74,
+      "ag": 75,
+      "az": 76,
+      "ain": 77,
+      "ativo": 78,
+      "bro": 79,
+      "ck": 80,
+      "co": 81,
+      "cu": 82,
+      "da": 83,
+      "de": 84,
+      "di": 85,
+      "d_of_turn": 86,
+      "es": 87,
+      "fo": 88,
+      "gativo": 89,
+      "il": 90,
+      "io": 91,
+      "it": 92,
+      "ian": 93,
+      "itivo": 94,
+      "ick": 95,
+      "ju": 96,
+      "laz": 97,
+      "mo": 98,
+      "mp": 99,
+      "man": 100,
+      "ntesto": 101,
+      "ov": 102,
+      "per": 103,
+      "pag": 104,
+      "pio": 105,
+      "qu": 106,
+      "rt": 107,
+      "ris": 108,
+      "rain": 109,
+      "sy": 110,
+      "sen": 111,
+      "ser": 112,
+      "sitivo": 113,
+      "train": 114,
+      "un": 115,
+      "user": 116,
+      "wn": 117,
+      "stem": 118,
+      "end_of_turn": 119,
+      "ina": 120,
+      "ing": 121,
+      "utro": 122,
+      "anal": 123,
+      "dog": 124,
+      "docu": 125,
+      "doman": 126,
+      "timent": 127,
+      "alian": 128,
+      "empio": 129,
+      "isi": 130,
+      "negativo": 131,
+      "neutro": 132,
+      "posta": 133,
+      "positivo": 134,
+      "start": 135,
+      "mento": 136,
+      "Input": 137,
+      "Output": 138,
+      "Questo": 139,
+      "brown": 140,
+      "contesto": 141,
+      "del": 142,
+      "esempio": 143,
+      "fox": 144,
+      "italian": 145,
+      "jump": 146,
+      "lazy": 147,
+      "model": 148,
+      "over": 149,
+      "pagina": 150,
+      "quick": 151,
+      "risposta": 152,
+      "system": 153,
+      "sentiment": 154,
+      "training": 155,
+      "analisi": 156,
+      "documento": 157,
+      "domanda": 158,
+      "start_of_turn": 159,
+      "italiano": 160,
+      "jumps": 161
+    },
+    "merges": [
+      [
+        "s",
+        "t"
+      ],
+      [
+        "e",
+        "n"
+      ],
+      [
+        "e",
+        "st"
+      ],
+      [
+        "i",
+        "n"
+      ],
+      [
+        "u",
+        "t"
+      ],
+      [
+        "est",
+        "o"
+      ],
+      [
+        "a",
+        "n"
+      ],
+      [
+        "d",
+        "o"
+      ],
+      [
+        "e",
+        "r"
+      ],
+      [
+        "t",
+        "i"
+      ],
+      [
+        "t",
+        "esto"
+      ],
+      [
+        "_",
+        "o"
+      ],
+      [
+        "_",
+        "t"
+      ],
+      [
+        "a",
+        "l"
+      ],
+      [
+        "e",
+        "m"
+      ],
+      [
+        "f",
+        "_t"
+      ],
+      [
+        "h",
+        "e"
+      ],
+      [
+        "i",
+        "s"
+      ],
+      [
+        "m",
+        "en"
+      ],
+      [
+        "n",
+        "e"
+      ],
+      [
+        "p",
+        "o"
+      ],
+      [
+        "p",
+        "ut"
+      ],
+      [
+        "r",
+        "n"
+      ],
+      [
+        "r",
+        "o"
+      ],
+      [
+        "t",
+        "he"
+      ],
+      [
+        "u",
+        "rn"
+      ],
+      [
+        "v",
+        "o"
+      ],
+      [
+        "st",
+        "a"
+      ],
+      [
+        "ti",
+        "vo"
+      ],
+      [
+        "_o",
+        "f_t"
+      ],
+      [
+        "men",
+        "t"
+      ],
+      [
+        "_of_t",
+        "urn"
+      ],
+      [
+        "I",
+        "n"
+      ],
+      [
+        "O",
+        "ut"
+      ],
+      [
+        "Q",
+        "u"
+      ],
+      [
+        "a",
+        "g"
+      ],
+      [
+        "a",
+        "z"
+      ],
+      [
+        "a",
+        "in"
+      ],
+      [
+        "a",
+        "tivo"
+      ],
+      [
+        "b",
+        "ro"
+      ],
+      [
+        "c",
+        "k"
+      ],
+      [
+        "c",
+        "o"
+      ],
+      [
+        "c",
+        "u"
+      ],
+      [
+        "d",
+        "a"
+      ],
+      [
+        "d",
+        "e"
+      ],
+      [
+        "d",
+        "i"
+      ],
+      [
+        "d",
+        "_of_turn"
+      ],
+      [
+        "e",
+        "s"
+      ],
+      [
+        "f",
+        "o"
+      ],
+      [
+        "g",
+        "ativo"
+      ],
+      [
+        "i",
+        "l"
+      ],
+      [
+        "i",
+        "o"
+      ],
+      [
+        "i",
+        "t"
+      ],
+      [
+        "i",
+        "an"
+      ],
+      [
+        "i",
+        "tivo"
+      ],
+      [
+        "i",
+        "ck"
+      ],
+      [
+        "j",
+        "u"
+      ],
+      [
+        "l",
+        "az"
+      ],
+      [
+        "m",
+        "o"
+      ],
+      [
+        "m",
+        "p"
+      ],
+      [
+        "m",
+        "an"
+      ],
+      [
+        "n",
+        "testo"
+      ],
+      [
+        "o",
+        "v"
+      ],
+      [
+        "p",
+        "er"
+      ],
+      [
+        "p",
+        "ag"
+      ],
+      [
+        "p",
+        "io"
+      ],
+      [
+        "q",
+        "u"
+      ],
+      [
+        "r",
+        "t"
+      ],
+      [
+        "r",
+        "is"
+      ],
+      [
+        "r",
+        "ain"
+      ],
+      [
+        "s",
+        "y"
+      ],
+      [
+        "s",
+        "en"
+      ],
+      [
+        "s",
+        "er"
+      ],
+      [
+        "s",
+        "itivo"
+      ],
+      [
+        "t",
+        "rain"
+      ],
+      [
+        "u",
+        "n"
+      ],
+      [
+        "u",
+        "ser"
+      ],
+      [
+        "w",
+        "n"
+      ],
+      [
+        "st",
+        "em"
+      ],
+      [
+        "en",
+        "d_of_turn"
+      ],
+      [
+        "in",
+        "a"
+      ],
+      [
+        "in",
+        "g"
+      ],
+      [
+        "ut",
+        "ro"
+      ],
+      [
+        "an",
+        "al"
+      ],
+      [
+        "do",
+        "g"
+      ],
+      [
+        "do",
+        "cu"
+      ],
+      [
+        "do",
+        "man"
+      ],
+      [
+        "ti",
+        "ment"
+      ],
+      [
+        "al",
+        "ian"
+      ],
+      [
+        "em",
+        "pio"
+      ],
+      [
+        "is",
+        "i"
+      ],
+      [
+        "ne",
+        "gativo"
+      ],
+      [
+        "ne",
+        "utro"
+      ],
+      [
+        "po",
+        "sta"
+      ],
+      [
+        "po",
+        "sitivo"
+      ],
+      [
+        "sta",
+        "rt"
+      ],
+      [
+        "ment",
+        "o"
+      ],
+      [
+        "In",
+        "put"
+      ],
+      [
+        "Out",
+        "put"
+      ],
+      [
+        "Qu",
+        "esto"
+      ],
+      [
+        "bro",
+        "wn"
+      ],
+      [
+        "co",
+        "ntesto"
+      ],
+      [
+        "de",
+        "l"
+      ],
+      [
+        "es",
+        "empio"
+      ],
+      [
+        "fo",
+        "x"
+      ],
+      [
+        "it",
+        "alian"
+      ],
+      [
+        "ju",
+        "mp"
+      ],
+      [
+        "laz",
+        "y"
+      ],
+      [
+        "mo",
+        "del"
+      ],
+      [
+        "ov",
+        "er"
+      ],
+      [
+        "pag",
+        "ina"
+      ],
+      [
+        "qu",
+        "ick"
+      ],
+      [
+        "ris",
+        "posta"
+      ],
+      [
+        "sy",
+        "stem"
+      ],
+      [
+        "sen",
+        "timent"
+      ],
+      [
+        "train",
+        "ing"
+      ],
+      [
+        "anal",
+        "isi"
+      ],
+      [
+        "docu",
+        "mento"
+      ],
+      [
+        "doman",
+        "da"
+      ],
+      [
+        "start",
+        "_of_turn"
+      ],
+      [
+        "italian",
+        "o"
+      ],
+      [
+        "jump",
+        "s"
+      ]
+    ]
+  }
+}

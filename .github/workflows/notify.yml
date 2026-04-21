@@ -1,0 +1,80 @@
+name: Notifica — Training completato
+
+# Attivato da un evento esterno (es. dalla cella finale di Colab)
+# con: curl -X POST https://api.github.com/repos/<utente>/<repo>/dispatches \
+#        -H "Authorization: Bearer $GITHUB_TOKEN" \
+#        -H "Accept: application/vnd.github+json" \
+#        -d '{"event_type":"training-done","client_payload":{"task":"01","acc":"0.91","f1":"0.89"}}'
+on:
+  repository_dispatch:
+    types: [training-done]
+
+  # Attivabile anche manualmente da Actions → Run workflow
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Numero task (es. 01)"
+        required: true
+        default: "01"
+      note:
+        description: "Note aggiuntive (es. metriche)"
+        required: false
+
+jobs:
+  notify:
+    name: Invia notifica training completato
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepara messaggio
+        id: msg
+        run: |
+          TASK="${{ github.event.client_payload.task || inputs.task }}"
+          ACC="${{ github.event.client_payload.acc || 'N/A' }}"
+          F1="${{ github.event.client_payload.f1 || 'N/A' }}"
+          NOTE="${{ github.event.client_payload.note || inputs.note }}"
+          echo "task=$TASK"   >> "$GITHUB_OUTPUT"
+          echo "acc=$ACC"     >> "$GITHUB_OUTPUT"
+          echo "f1=$F1"       >> "$GITHUB_OUTPUT"
+          echo "note=$NOTE"   >> "$GITHUB_OUTPUT"
+
+      # ── Notifica via GitHub Issue (sempre disponibile, senza config extra) ──
+      - name: Apri Issue di completamento
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const task  = "${{ steps.msg.outputs.task }}";
+            const acc   = "${{ steps.msg.outputs.acc }}";
+            const f1    = "${{ steps.msg.outputs.f1 }}";
+            const note  = "${{ steps.msg.outputs.note }}";
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              title: `✅ Training Task ${task} completato`,
+              body: [
+                `## Training completato — Task ${task}`,
+                ``,
+                `| Metrica | Valore |`,
+                `|---------|--------|`,
+                `| Accuracy | ${acc} |`,
+                `| macro-F1 | ${f1} |`,
+                note ? `\n**Note:** ${note}` : "",
+                ``,
+                `### Prossimi step`,
+                `- [ ] Aprire \`task_${task}_*/evaluate.ipynb\` per il confronto completo`,
+                `- [ ] Taggare il commit: \`git tag task-${task}-done && git push --tags\``,
+              ].join("\n"),
+              labels: ["training-done"],
+            });
+
+      # ── Notifica via Slack (opzionale — aggiungi SLACK_WEBHOOK nei Secrets) ──
+      - name: Notifica Slack (opzionale)
+        if: ${{ env.SLACK_WEBHOOK != '' }}
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -s -X POST "$SLACK_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "text": "✅ *Training Task ${{ steps.msg.outputs.task }} completato*\nAcc: ${{ steps.msg.outputs.acc }} | F1: ${{ steps.msg.outputs.f1 }}\n${{ steps.msg.outputs.note }}"
+            }'

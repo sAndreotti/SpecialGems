@@ -1,0 +1,84 @@
+{
+  "best_global_step": null,
+  "best_metric": null,
+  "best_model_checkpoint": null,
+  "epoch": 0.5,
+  "eval_steps": 500,
+  "global_step": 10,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "entropy": 5.073798656463623,
+      "epoch": 0.1,
+      "grad_norm": 2.69522762298584,
+      "learning_rate": 0.00018,
+      "loss": 4.9534406661987305,
+      "mean_token_accuracy": 0.06349206529557705,
+      "num_tokens": 128.0,
+      "step": 2
+    },
+    {
+      "entropy": 5.073381185531616,
+      "epoch": 0.2,
+      "grad_norm": 2.53001070022583,
+      "learning_rate": 0.00014,
+      "loss": 4.879603385925293,
+      "mean_token_accuracy": 0.0634920671582222,
+      "num_tokens": 256.0,
+      "step": 4
+    },
+    {
+      "entropy": 5.072937965393066,
+      "epoch": 0.3,
+      "grad_norm": 2.2096033096313477,
+      "learning_rate": 0.0001,
+      "loss": 4.821437835693359,
+      "mean_token_accuracy": 0.07142857275903225,
+      "num_tokens": 384.0,
+      "step": 6
+    },
+    {
+      "entropy": 5.072345733642578,
+      "epoch": 0.4,
+      "grad_norm": 2.008043050765991,
+      "learning_rate": 6e-05,
+      "loss": 4.7840471267700195,
+      "mean_token_accuracy": 0.1031746044754982,
+      "num_tokens": 512.0,
+      "step": 8
+    },
+    {
+      "entropy": 5.071877717971802,
+      "epoch": 0.5,
+      "grad_norm": 2.0211167335510254,
+      "learning_rate": 2e-05,
+      "loss": 4.763586044311523,
+      "mean_token_accuracy": 0.0873015895485878,
+      "num_tokens": 640.0,
+      "step": 10
+    }
+  ],
+  "logging_steps": 2,
+  "max_steps": 10,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 1,
+  "save_steps": 10,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": true
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 257556480.0,
+  "train_batch_size": 1,
+  "trial_name": null,
+  "trial_params": null
+}

@@ -1,0 +1,55 @@
+name: Release — Task completato
+
+# Attivato quando fai: git tag task-01-done && git push --tags
+# oppure: git tag task-01-done -m "Sentiment: Acc 0.91, F1 0.89" && git push --tags
+on:
+  push:
+    tags:
+      - "task-[0-9][0-9]-done"
+
+jobs:
+  create-release:
+    name: Crea GitHub Release per il task completato
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # necessario per creare release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # serve per le note automatiche
+
+      - name: Estrai numero task dal tag
+        id: tag_info
+        run: |
+          TAG="${{ github.ref_name }}"          # es. task-01-done
+          TASK_NUM=$(echo "$TAG" | grep -oP '\d+')
+          echo "task_num=$TASK_NUM" >> "$GITHUB_OUTPUT"
+
+          # Trova il nome della cartella
+          TASK_DIR=$(ls -d task_${TASK_NUM}_* 2>/dev/null | head -1)
+          echo "task_dir=$TASK_DIR"  >> "$GITHUB_OUTPUT"
+
+      - name: Crea Release con note automatiche
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "✅ Task ${{ steps.tag_info.outputs.task_num }} completato"
+          body: |
+            ## Fine-tuning completato — Task ${{ steps.tag_info.outputs.task_num }}
+
+            **Cartella:** `${{ steps.tag_info.outputs.task_dir }}/`
+
+            ### File inclusi
+            - `train.py` — script di training con LoRA/Unsloth
+            - `dataset_prep.py` — preparazione dataset
+            - `evaluate.ipynb` — confronto base vs fine-tuned
+
+            ### Come riprodurre
+            ```bash
+            git checkout ${{ github.ref_name }}
+            python ${{ steps.tag_info.outputs.task_dir }}/train.py --model_size 1b
+            ```
+          generate_release_notes: true
+          draft: false
+          prerelease: false

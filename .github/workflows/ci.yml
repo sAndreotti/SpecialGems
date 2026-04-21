@@ -1,0 +1,61 @@
+name: CI — Dry Run tutti i task
+
+# Si attiva ad ogni push e su ogni Pull Request verso main
+on:
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  dry-run:
+    name: Syntax check + dry run (CPU, no GPU)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Installa dipendenze leggere (no Unsloth, no GPU)
+        run: |
+          pip install --upgrade pip
+          pip install datasets transformers trl accelerate tokenizers torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Verifica sintassi Python (tutti gli script)
+        run: |
+          echo "=== Verifica sintassi utils ==="
+          python -m py_compile utils/base_trainer.py && echo "✓ base_trainer.py"
+          python -m py_compile utils/dry_run.py      && echo "✓ dry_run.py"
+
+          echo "=== Verifica sintassi task 01-26 ==="
+          for f in task_*/train.py task_*/dataset_prep.py; do
+            python -m py_compile "$f" && echo "✓ $f" || (echo "✗ $f" && exit 1)
+          done
+
+      - name: Dry run tutti i task (dati sintetici, 5 step, CPU)
+        run: |
+          PASS=0; FAIL=0
+          for tid in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26; do
+            python utils/dry_run.py \
+              --task "$tid" \
+              --max_steps 5 \
+              --output_dir /tmp/checkpoints \
+            && PASS=$((PASS+1)) \
+            || FAIL=$((FAIL+1))
+          done
+          echo "Risultati: ${PASS} PASSED, ${FAIL} FAILED"
+          [ "$FAIL" -eq 0 ] || exit 1
+
+      - name: Carica report dry run come artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dry-run-reports
+          path: /tmp/checkpoints/**/dry_run_report.json
+          retention-days: 7

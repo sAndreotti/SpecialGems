@@ -1,0 +1,37 @@
+# ============================================================
+# Dipendenze principali — Special Application Models
+# Fine-tuning Gemma 3/4 con Unsloth (Colab/Kaggle)
+# ============================================================
+
+# --- Framework di training ---
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git  # Patch fp16 Gemma 3
+trl>=0.8.6              # SFTTrainer, DPOTrainer
+peft>=0.10.0            # LoRA/QLoRA
+transformers>=4.40.0    # AutoModel, chat templates
+accelerate>=0.28.0      # multi-GPU, DeepSpeed
+bitsandbytes>=0.43.0    # quantizzazione 4-bit
+
+# --- Dataset e preprocessing ---
+datasets>=2.18.0
+huggingface_hub>=0.22.0
+sentencepiece>=0.2.0    # tokenizer Gemma
+protobuf>=3.20.0
+
+# --- Metriche ---
+evaluate>=0.4.1
+rouge_score>=0.1.2
+bert_score>=0.3.13
+sacrebleu>=2.3.1
+seqeval>=1.2.2          # NER span-level F1
+nltk>=3.8.1
+
+# --- Notebook e visualizzazione ---
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+matplotlib>=3.8.0
+pandas>=2.0.0
+tqdm>=4.66.0
+
+# --- Utility ---
+jsonlines>=4.0.0
+python-dotenv>=1.0.0
