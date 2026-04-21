@@ -159,13 +159,13 @@ def train(args):
         seed=42,
         report_to="none",
         dataset_text_field="text",
-        max_seq_length=MAX_SEQ_LENGTH,
+        max_length=MAX_SEQ_LENGTH,
         packing=True,   # aumenta efficienza su sequenze corte
     )
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         train_dataset=ds["train"],
         eval_dataset=ds.get("validation"),
         args=train_args,
