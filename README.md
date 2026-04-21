@@ -54,54 +54,54 @@ warmup        = 0.03   # 3% of total steps
 
 ### Text Understanding (Tasks 1–5)
 
-| # | Task | Model | Metrics |
-|---|---|---|---|
-| 1 | **Sentiment Analysis** — pos/neg/neu polarity or 1–5 star rating | Gemma 3 1B | Accuracy, macro-F1 |
-| 2 | **Intent Classification** — 60–150 intent classes + OOD | Gemma 3 1B | Top-1 accuracy, macro-F1, OOS recall |
-| 3 | **Topic Classification** — single- or multi-label on news/social | Gemma 3 1B | Accuracy, macro-F1, Hamming loss |
-| 4 | **Natural Language Inference (NLI)** — entailment / neutral / contradiction | Gemma 3 1B–4B | Accuracy matched/mismatched, ANLI per-round |
-| 5 | **Reading Comprehension (Multi-Choice)** — passage + 4 choices | Gemma 3 4B | Accuracy |
+| # | Task | Model | Metrics | Colab |
+|---|---|---|---|---|
+| 1 | **Sentiment Analysis** — pos/neg/neu polarity or 1–5 star rating | Gemma 3 1B | Accuracy, macro-F1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_01_sentiment/colab_train.ipynb) |
+| 2 | **Intent Classification** — 60–150 intent classes + OOD | Gemma 3 1B | Top-1 accuracy, macro-F1, OOS recall | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_02_intent/colab_train.ipynb) |
+| 3 | **Topic Classification** — single- or multi-label on news/social | Gemma 3 1B | Accuracy, macro-F1, Hamming loss | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_03_topic/colab_train.ipynb) |
+| 4 | **Natural Language Inference (NLI)** — entailment / neutral / contradiction | Gemma 3 1B–4B | Accuracy matched/mismatched, ANLI per-round | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_04_nli/colab_train.ipynb) |
+| 5 | **Reading Comprehension (Multi-Choice)** — passage + 4 choices | Gemma 3 4B | Accuracy | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_05_reading_comprehension/colab_train.ipynb) |
 
 ### Generation (Tasks 6–12)
 
-| # | Task | Model | Metrics |
-|---|---|---|---|
-| 6 | **Text Summarization** — abstractive/extractive from articles and dialogues | Gemma 3 4B (1B for SAMSum) | ROUGE-1/2/L, BERTScore |
-| 7 | **Question Answering** — extractive (span) and generative | Gemma 3 1B–4B | Exact Match, token F1, ROUGE-L |
-| 8 | **Translation EN↔IT** | Gemma 3 4B–12B | SacreBLEU, chrF++, COMET-22, TER |
-| 9 | **Paraphrasing** — semantically equivalent reformulation | Gemma 3 1B–4B | BLEU, self-BLEU, BERTScore, iBLEU |
-| 10 | **Grammatical Error Correction (GEC)** | Gemma 3 4B–12B | M2/ERRANT F0.5, GLEU+ |
-| 11 | **Text Simplification** — readable rewriting with readability constraints | Gemma 3 4B | SARI, BLEU, Gulpease, BERTScore |
-| 12 | **Text Style Transfer** — formality, tone, toxicity | Gemma 3 4B | Transfer-accuracy, BERTScore, perplexity |
+| # | Task | Model | Metrics | Colab |
+|---|---|---|---|---|
+| 6 | **Text Summarization** — abstractive/extractive from articles and dialogues | Gemma 3 4B (1B for SAMSum) | ROUGE-1/2/L, BERTScore | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_06_summarization/colab_train.ipynb) |
+| 7 | **Question Answering** — extractive (span) and generative | Gemma 3 1B–4B | Exact Match, token F1, ROUGE-L | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_07_question_answering/colab_train.ipynb) |
+| 8 | **Translation EN↔IT** | Gemma 3 4B–12B | SacreBLEU, chrF++, COMET-22, TER | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_08_translation/colab_train.ipynb) |
+| 9 | **Paraphrasing** — semantically equivalent reformulation | Gemma 3 1B–4B | BLEU, self-BLEU, BERTScore, iBLEU | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_09_paraphrase/colab_train.ipynb) |
+| 10 | **Grammatical Error Correction (GEC)** | Gemma 3 4B–12B | M2/ERRANT F0.5, GLEU+ | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_10_gec/colab_train.ipynb) |
+| 11 | **Text Simplification** — readable rewriting with readability constraints | Gemma 3 4B | SARI, BLEU, Gulpease, BERTScore | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_11_simplification/colab_train.ipynb) |
+| 12 | **Text Style Transfer** — formality, tone, toxicity | Gemma 3 4B | Transfer-accuracy, BERTScore, perplexity | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_12_style_transfer/colab_train.ipynb) |
 
 ### Structured Extraction (Tasks 13–20)
 
-| # | Task | Model | Metrics |
-|---|---|---|---|
-| 13 | **Named Entity Recognition (Generative)** — inline or JSON output | Gemma 3 1B / 4B | Span micro/macro entity-F1 (seqeval) |
-| 14 | **Relation Extraction** — JSON triples `{head, relation, tail}` | Gemma 3 4B / 12B | Micro-F1 on triples |
-| 15 | **Text-to-SQL** — NL + DB schema → executable SQL query | Gemma 3 4B / 12B+ | Exact Set Match, Execution Accuracy |
-| 16 | **Code Generation / Completion** — docstring → implementation | Gemma 3 4B / 12B+ | pass@1 / pass@10 (EvalPlus) |
-| 17 | **Document Classification** — text → label or JSON | Gemma 3 1B | Accuracy, macro-F1, Hamming loss |
-| 18 | **Table Extraction / Table QA** — table + question → answer | Gemma 3 4B / 12B | Exact-match, BLEU/ROUGE/BERTScore |
-| 19 | **Structured Data Extraction** — text → JSON with schema | Gemma 3 4B | Schema-validity rate, field-level P/R/F1 |
-| 20 | **DocVQA Multimodal** — page image + question → answer | Gemma 3 4B / 12B+ | ANLS, VQA accuracy, entity-F1 |
+| # | Task | Model | Metrics | Colab |
+|---|---|---|---|---|
+| 13 | **Named Entity Recognition (Generative)** — inline or JSON output | Gemma 3 1B / 4B | Span micro/macro entity-F1 (seqeval) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_13_ner/colab_train.ipynb) |
+| 14 | **Relation Extraction** — JSON triples `{head, relation, tail}` | Gemma 3 4B / 12B | Micro-F1 on triples | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_14_relation_extraction/colab_train.ipynb) |
+| 15 | **Text-to-SQL** — NL + DB schema → executable SQL query | Gemma 3 4B / 12B+ | Exact Set Match, Execution Accuracy | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_15_text_to_sql/colab_train.ipynb) |
+| 16 | **Code Generation / Completion** — docstring → implementation | Gemma 3 4B / 12B+ | pass@1 / pass@10 (EvalPlus) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_16_code_generation/colab_train.ipynb) |
+| 17 | **Document Classification** — text → label or JSON | Gemma 3 1B | Accuracy, macro-F1, Hamming loss | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_17_doc_classification/colab_train.ipynb) |
+| 18 | **Table Extraction / Table QA** — table + question → answer | Gemma 3 4B / 12B | Exact-match, BLEU/ROUGE/BERTScore | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_18_table_qa/colab_train.ipynb) |
+| 19 | **Structured Data Extraction** — text → JSON with schema | Gemma 3 4B | Schema-validity rate, field-level P/R/F1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_19_structured_extraction/colab_train.ipynb) |
+| 20 | **DocVQA Multimodal** — page image + question → answer | Gemma 3 4B / 12B+ | ANLS, VQA accuracy, entity-F1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_20_docvqa/colab_train.ipynb) |
 
 ### Dialogue & Alignment (Tasks 21–25)
 
-| # | Task | Model | Metrics |
-|---|---|---|---|
-| 21 | **Instruction Following / General SFT** — baseline for DPO/ORPO | Gemma 3 4B / 12B | MT-Bench-IT, AlpacaEval-IT, IFEval |
-| 22 | **Multi-Turn Chat** — history management and long context | Gemma 3 4B–12B | MT-Bench(-IT), AlpacaEval 2 LC win-rate |
-| 23 | **RAG Fine-Tuning** — generator grounded on retrieved passages | Gemma 3 4B / 12B | RAGAS faithfulness, AIS, EM/F1 |
-| 24 | **Fact Checking / Claim Verification** — SUPPORTS / REFUTES / NEI | Gemma 3 4B / 12B | Label accuracy, macro-F1, FEVER score |
-| 25 | **Hate Speech / Toxic Content Detection** | Gemma 3 1B / 4B | Macro-F1 (EVALITA), HateCheck |
+| # | Task | Model | Metrics | Colab |
+|---|---|---|---|---|
+| 21 | **Instruction Following / General SFT** — baseline for DPO/ORPO | Gemma 3 4B / 12B | MT-Bench-IT, AlpacaEval-IT, IFEval | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_21_sft/colab_train.ipynb) |
+| 22 | **Multi-Turn Chat** — history management and long context | Gemma 3 4B–12B | MT-Bench(-IT), AlpacaEval 2 LC win-rate | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_22_multiturn_chat/colab_train.ipynb) |
+| 23 | **RAG Fine-Tuning** — generator grounded on retrieved passages | Gemma 3 4B / 12B | RAGAS faithfulness, AIS, EM/F1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_23_rag_finetuning/colab_train.ipynb) |
+| 24 | **Fact Checking / Claim Verification** — SUPPORTS / REFUTES / NEI | Gemma 3 4B / 12B | Label accuracy, macro-F1, FEVER score | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_24_fact_checking/colab_train.ipynb) |
+| 25 | **Hate Speech / Toxic Content Detection** | Gemma 3 1B / 4B | Macro-F1 (EVALITA), HateCheck | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_25_hate_speech/colab_train.ipynb) |
 
 ### Advanced Extraction (Task 26)
 
-| # | Task | Model | Metrics |
-|---|---|---|---|
-| 26 | **Document Segmentation / Page-Stream Segmentation** — BIO boundary detection on composite PDFs | Gemma 3 1B (pairwise) / 4B (stream) | Boundary F1, Window-Diff, Pk, Panoptic Quality |
+| # | Task | Model | Metrics | Colab |
+|---|---|---|---|---|
+| 26 | **Document Segmentation / Page-Stream Segmentation** — BIO boundary detection on composite PDFs | Gemma 3 1B (pairwise) / 4B (stream) | Boundary F1, Window-Diff, Pk, Panoptic Quality | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sAndreotti/SpecialGems/blob/main/task_26_doc_segmentation/colab_train.ipynb) |
 
 ---
 
